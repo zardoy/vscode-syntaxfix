@@ -1,28 +1,14 @@
 {
-    "name": "fix-all-json",
-    "displayName": "Fix All JSON",
+    "name": "syntaxfix",
+    "displayName": "SyntaxFix",
     "publisher": "zardoy",
     "version": "0.1.0",
     "categories": [
         "Other"
     ],
-    "contributes": {
-        "configuration": {
-            "properties": {
-                "fixTypes": {
-                    "type": "object",
-                    "properties": {
-                        "expectedComma": {
-                            "type": "boolean",
-                            "default": true
-                        }
-                    }
-                }
-            }
-        }
-    },
+    "contributes": {},
     "activationEvents": [
-        "onLanguage:json"
+        "onLanguage:typescript"
     ],
     "capabilities": {
         "untrustedWorkspaces": {
