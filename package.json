@@ -6,7 +6,9 @@
     "categories": [
         "Other"
     ],
-    "contributes": {},
+    "contributes": {
+        "commands": []
+    },
     "activationEvents": [
         "onLanguage:typescript"
     ],

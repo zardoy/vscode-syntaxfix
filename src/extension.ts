@@ -1,8 +1,8 @@
 /* eslint-disable no-await-in-loop */
 import { builtinModules } from 'module'
+import { join } from 'path/posix'
 import { registerExtensionCommand, registerActiveDevelopmentCommand, registerNoop, showQuickPick } from 'vscode-framework'
 import vscode from 'vscode'
-import { join } from 'path/posix'
 
 // settings: also suggest to install @types/node if package.json has typescript
 export const activate = () => {
@@ -38,6 +38,27 @@ export const activate = () => {
                 return codeActions
             },
         },
+    )
+
+    vscode.languages.registerCompletionItemProvider(
+        {
+            language: 'typescriptreact',
+        },
+        {
+            provideCompletionItems(document, position, _, trigger) {
+                console.log('trigger')
+                const completions: vscode.CompletionItem[] = []
+
+                const colorCompletion = new vscode.CompletionItem('Color_Mode', vscode.CompletionItemKind.Color)
+                colorCompletion.detail = 'Detailing'
+                const THREE_BACKTICKS = '```'
+                colorCompletion.documentation = new vscode.MarkdownString(`${THREE_BACKTICKS}${document.languageId}\nconst name = 5\n${THREE_BACKTICKS}`)
+                colorCompletion.preselect = true
+
+                return [colorCompletion]
+            },
+        },
+        '<',
     )
 
     // Add missing commas
